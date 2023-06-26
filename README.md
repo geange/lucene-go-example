@@ -1,6 +1,6 @@
 # lucene-go-example
 
-some example for lucene-go
+sample code for lucene-go
 
 ## Quick Start
 
