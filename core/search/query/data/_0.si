@@ -1,0 +1,32 @@
+    version 8.11.2
+    min version 8.11.2
+    number of documents 10
+    uses compound file true
+    diagnostics 10
+      key os
+      value Mac OS X
+      key java.vendor
+      value Oracle Corporation
+      key java.version
+      value 11.0.19
+      key java.vm.version
+      value 11.0.19+9-LTS-224
+      key lucene.version
+      value 8.11.2
+      key os.arch
+      value aarch64
+      key java.runtime.version
+      value 11.0.19+9-LTS-224
+      key source
+      value flush
+      key os.version
+      value 13.4
+      key timestamp
+      value 1686324260126
+    attributes 0
+    files 2
+      file _0.si
+      file _0.scf
+    id ži½‰±Å¶¤5’Ü+úq}
+    sort 0
+checksum 00000000000861285015

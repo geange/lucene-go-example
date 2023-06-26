@@ -1,0 +1,309 @@
+cfs entry for: _0.fld
+doc 0
+  field 0
+    name content
+    type string
+    value h
+  field 1
+    name author
+    type string
+    value author1
+doc 1
+  field 0
+    name content
+    type string
+    value b
+  field 1
+    name author
+    type string
+    value author2
+doc 2
+  field 0
+    name content
+    type string
+    value a c
+  field 1
+    name author
+    type string
+    value author3
+doc 3
+  field 0
+    name content
+    type string
+    value a c e
+  field 1
+    name author
+    type string
+    value author4
+doc 4
+  field 0
+    name content
+    type string
+    value h
+  field 1
+    name author
+    type string
+    value author5
+doc 5
+  field 0
+    name content
+    type string
+    value c e
+  field 1
+    name author
+    type string
+    value author6
+doc 6
+  field 0
+    name content
+    type string
+    value c a e
+  field 1
+    name author
+    type string
+    value author7
+doc 7
+  field 0
+    name content
+    type string
+    value f
+  field 1
+    name author
+    type string
+    value author8
+doc 8
+  field 0
+    name content
+    type string
+    value b c d e c e
+  field 1
+    name author
+    type string
+    value author9
+doc 9
+  field 0
+    name content
+    type string
+    value a c e a b c
+  field 1
+    name author
+    type string
+    value author10
+END
+checksum 00000000001891639310
+cfs entry for: _0.inf
+number of fields 2
+  name content
+  number 0
+  index options DOCS_AND_FREQS_AND_POSITIONS
+  term vectors false
+  payloads false
+  norms true
+  doc values NONE
+  doc values gen -1
+  attributes 0
+  data dimensional count 0
+  index dimensional count 0
+  dimensional num bytes 0
+  soft-deletes false
+  name author
+  number 1
+  index options DOCS_AND_FREQS_AND_POSITIONS
+  term vectors false
+  payloads false
+  norms true
+  doc values NONE
+  doc values gen -1
+  attributes 0
+  data dimensional count 0
+  index dimensional count 0
+  dimensional num bytes 0
+  soft-deletes false
+checksum 00000000003521989895
+cfs entry for: _0.len
+field content
+  type NUMERIC
+  minvalue 1
+  pattern 0
+0
+T
+0
+T
+1
+T
+2
+T
+0
+T
+1
+T
+2
+T
+0
+T
+5
+T
+5
+T
+field author
+  type NUMERIC
+  minvalue 1
+  pattern 0
+0
+T
+0
+T
+0
+T
+0
+T
+0
+T
+0
+T
+0
+T
+0
+T
+0
+T
+0
+T
+END
+checksum 00000000002677737565
+cfs entry for: _0.pst
+field author
+  term author1
+    doc 0
+      freq 1
+      pos 0
+  term author10
+    doc 9
+      freq 1
+      pos 0
+  term author2
+    doc 1
+      freq 1
+      pos 0
+  term author3
+    doc 2
+      freq 1
+      pos 0
+  term author4
+    doc 3
+      freq 1
+      pos 0
+  term author5
+    doc 4
+      freq 1
+      pos 0
+  term author6
+    doc 5
+      freq 1
+      pos 0
+  term author7
+    doc 6
+      freq 1
+      pos 0
+  term author8
+    doc 7
+      freq 1
+      pos 0
+  term author9
+    doc 8
+      freq 1
+      pos 0
+field content
+  term a
+    doc 2
+      freq 1
+      pos 0
+    doc 3
+      freq 1
+      pos 0
+    doc 6
+      freq 1
+      pos 1
+    doc 9
+      freq 2
+      pos 0
+      pos 3
+  term b
+    doc 1
+      freq 1
+      pos 0
+    doc 8
+      freq 1
+      pos 0
+    doc 9
+      freq 1
+      pos 4
+  term c
+    doc 2
+      freq 1
+      pos 1
+    doc 3
+      freq 1
+      pos 1
+    doc 5
+      freq 1
+      pos 0
+    doc 6
+      freq 1
+      pos 0
+    doc 8
+      freq 2
+      pos 1
+      pos 4
+    doc 9
+      freq 2
+      pos 1
+      pos 5
+  term d
+    doc 8
+      freq 1
+      pos 2
+  term e
+    doc 3
+      freq 1
+      pos 2
+    doc 5
+      freq 1
+      pos 1
+    doc 6
+      freq 1
+      pos 2
+    doc 8
+      freq 2
+      pos 3
+      pos 5
+    doc 9
+      freq 1
+      pos 2
+  term f
+    doc 7
+      freq 1
+      pos 0
+  term h
+    doc 0
+      freq 1
+      pos 0
+    doc 4
+      freq 1
+      pos 0
+END
+checksum 00000000003940032073
+table of contents, size: 4
+  filename: _0.fld
+    start: 22
+    end: 1299
+  filename: _0.inf
+    start: 1321
+    end: 1923
+  filename: _0.len
+    start: 1945
+    end: 2166
+  filename: _0.pst
+    start: 2188
+    end: 3631
+table of contents begins at offset: 0000000000000003631
