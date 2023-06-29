@@ -55,19 +55,19 @@ func main() {
 		panic(err)
 	}
 
-	values.Intersect(&index.IntersectVisitor{
-		VisitByDocID: func(docID int) error {
+	values.Intersect(&index.BytesVisitor{
+		VisitFn: func(docID int) error {
 			return nil
 		},
-		VisitLeaf: func(docID int, packedValue []byte) error {
+		VisitLeafFn: func(docID int, packedValue []byte) error {
 			fmt.Printf("docID: %d %d,%d\n",
 				docID, binary.BigEndian.Uint32(packedValue[:4]), binary.BigEndian.Uint32(packedValue[4:]))
 			return nil
 		},
-		Compare: func(minPackedValue, maxPackedValue []byte) index.Relation {
+		CompareFn: func(minPackedValue, maxPackedValue []byte) index.Relation {
 			return index.CELL_CROSSES_QUERY
 		},
-		Grow: func(count int) {
+		GrowFn: func(count int) {
 
 		},
 	})
