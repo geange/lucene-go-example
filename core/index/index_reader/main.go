@@ -46,7 +46,7 @@ func main() {
 	//		fmt.Println(err)
 	//		continue
 	//	}
-	//	fmt.Println(terms.Name(), terms.Value())
+	//	fmt.Println(terms.Name(), terms.value())
 	//}
 
 	searcher, err := search.NewIndexSearcher(reader)

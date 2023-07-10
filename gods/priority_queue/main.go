@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/emirpasic/gods/queues/priorityqueue"
+	"github.com/geange/gods-generic/queues/priorityqueue"
 )
 
 func main() {
