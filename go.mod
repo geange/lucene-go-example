@@ -3,8 +3,8 @@ module github.com/geange/lucene-go-example
 go 1.21rc2
 
 require (
-	github.com/emirpasic/gods v1.18.1
-	github.com/geange/lucene-go v0.0.0-20230626122531-b24234944766
+	github.com/geange/gods-generic v0.0.0-20230716134303-edc80ecd4c36
+	github.com/geange/lucene-go v0.0.0-20230716154824-c271e91aabd3
 )
 
 require (
