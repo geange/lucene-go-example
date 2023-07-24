@@ -23,7 +23,7 @@ func main() {
 
 	analyzer := standard.NewStandardAnalyzer(set)
 
-	err = mi.AddField(document.NewTextFieldByString("f1", "some text", false), analyzer)
+	err = mi.AddField(document.NewTextField("f1", "some text", false), analyzer)
 	if err != nil {
 		panic(err)
 	}

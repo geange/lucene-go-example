@@ -3,21 +3,21 @@ package main
 import (
 	"encoding/binary"
 	"github.com/geange/lucene-go/codecs/simpletext"
+	"github.com/geange/lucene-go/core/document"
 	"github.com/geange/lucene-go/core/index"
 	"github.com/geange/lucene-go/core/store"
-	"github.com/geange/lucene-go/core/types"
 	"github.com/geange/lucene-go/core/util"
 )
 
 func main() {
-	fieldInfo := types.NewFieldInfo(
+	fieldInfo := document.NewFieldInfo(
 		"field1",
 		1,
 		false,
 		false,
 		true,
-		types.INDEX_OPTIONS_DOCS_AND_FREQS_AND_POSITIONS_AND_OFFSETS,
-		types.DOC_VALUES_TYPE_NONE,
+		document.INDEX_OPTIONS_DOCS_AND_FREQS_AND_POSITIONS_AND_OFFSETS,
+		document.DOC_VALUES_TYPE_NONE,
 		-1,
 		map[string]string{},
 		2,
@@ -61,7 +61,7 @@ func main() {
 	segment := index.NewSegmentInfo(dir, version, minVersion, "0", 3,
 		false, nil, map[string]string{}, []byte("1"), map[string]string{}, nil)
 
-	infos := index.NewFieldInfos([]*types.FieldInfo{fieldInfo})
+	infos := index.NewFieldInfos([]*document.FieldInfo{fieldInfo})
 
 	writeState := index.NewSegmentWriteState(dir, segment, infos, nil, nil)
 

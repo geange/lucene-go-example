@@ -3,9 +3,9 @@ package main
 import (
 	"fmt"
 	"github.com/geange/lucene-go/codecs/simpletext"
+	"github.com/geange/lucene-go/core/document"
 	"github.com/geange/lucene-go/core/index"
 	"github.com/geange/lucene-go/core/store"
-	"github.com/geange/lucene-go/core/types"
 	"github.com/geange/lucene-go/core/util"
 	"io"
 	"strconv"
@@ -122,7 +122,7 @@ func NewMyNormsProducer(si *index.SegmentInfo) *MyNormsProducer {
 	return &MyNormsProducer{si: si}
 }
 
-func (m *MyNormsProducer) GetNorms(field *types.FieldInfo) (index.NumericDocValues, error) {
+func (m *MyNormsProducer) GetNorms(field *document.FieldInfo) (index.NumericDocValues, error) {
 	return NewMyNumericDocValues(m.si), nil
 }
 

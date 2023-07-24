@@ -3,9 +3,9 @@ package main
 import (
 	"fmt"
 	"github.com/geange/lucene-go/codecs/simpletext"
+	"github.com/geange/lucene-go/core/document"
 	"github.com/geange/lucene-go/core/index"
 	"github.com/geange/lucene-go/core/store"
-	"github.com/geange/lucene-go/core/types"
 	"github.com/geange/lucene-go/core/util"
 )
 
@@ -20,7 +20,7 @@ func main() {
 	segment := index.NewSegmentInfo(dir, version, minVersion, "0", 3,
 		false, nil, map[string]string{}, []byte("1"), map[string]string{}, nil)
 
-	fieldInfos := index.NewFieldInfos([]*types.FieldInfo{&types.FieldInfo{}})
+	fieldInfos := index.NewFieldInfos([]*document.FieldInfo{&document.FieldInfo{}})
 
 	format := simpletext.NewSimpleTextFieldInfosFormat()
 	err = format.Write(dir, segment, "", fieldInfos, nil)
