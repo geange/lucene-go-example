@@ -6,6 +6,7 @@ import (
 	"github.com/geange/lucene-go/core/document"
 	"github.com/geange/lucene-go/core/index"
 	"github.com/geange/lucene-go/core/store"
+	"github.com/geange/lucene-go/core/types"
 	"github.com/geange/lucene-go/core/util"
 	"io"
 	"strconv"
@@ -171,7 +172,7 @@ func (m *MyNumericDocValues) Advance(target int) (int, error) {
 }
 
 func (m *MyNumericDocValues) SlowAdvance(target int) (int, error) {
-	return index.SlowAdvance(m, target)
+	return types.SlowAdvance(m, target)
 }
 
 func (m *MyNumericDocValues) Cost() int64 {

@@ -2,9 +2,9 @@ package main
 
 import (
 	"encoding/binary"
-	"github.com/geange/lucene-go/codecs/bkd"
 	"github.com/geange/lucene-go/codecs/simpletext"
 	"github.com/geange/lucene-go/core/store"
+	"github.com/geange/lucene-go/core/util/bkd"
 )
 
 func main() {
@@ -13,7 +13,7 @@ func main() {
 		panic(err)
 	}
 
-	cfg, err := bkd.NewBKDConfig(2, 2, 4, 2)
+	cfg, err := bkd.NewConfig(2, 2, 4, 2)
 	if err != nil {
 		panic(err)
 	}

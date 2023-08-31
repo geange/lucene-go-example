@@ -20,7 +20,7 @@ func main() {
 
 	config := index.NewIndexWriterConfig(codec, similarity)
 
-	writer, err := index.NewIndexWriter(dir, config)
+	writer, err := index.NewWriter(dir, config)
 	if err != nil {
 		panic(err)
 	}

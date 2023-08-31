@@ -7,6 +7,7 @@ import (
 	"github.com/geange/lucene-go/core/document"
 	"github.com/geange/lucene-go/core/index"
 	"github.com/geange/lucene-go/core/store"
+	"github.com/geange/lucene-go/core/types"
 	"github.com/geange/lucene-go/core/util"
 )
 
@@ -55,7 +56,7 @@ func main() {
 		panic(err)
 	}
 
-	values.Intersect(&index.BytesVisitor{
+	values.Intersect(&types.BytesVisitor{
 		VisitFn: func(docID int) error {
 			return nil
 		},
@@ -64,8 +65,8 @@ func main() {
 				docID, binary.BigEndian.Uint32(packedValue[:4]), binary.BigEndian.Uint32(packedValue[4:]))
 			return nil
 		},
-		CompareFn: func(minPackedValue, maxPackedValue []byte) index.Relation {
-			return index.CELL_CROSSES_QUERY
+		CompareFn: func(minPackedValue, maxPackedValue []byte) types.Relation {
+			return types.CELL_CROSSES_QUERY
 		},
 		GrowFn: func(count int) {
 

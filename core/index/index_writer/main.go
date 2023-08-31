@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"github.com/geange/lucene-go/core/document"
 
 	"github.com/geange/lucene-go/codecs/simpletext"
 	"github.com/geange/lucene-go/core/index"
@@ -20,86 +21,66 @@ func main() {
 
 	config := index.NewIndexWriterConfig(codec, similarity)
 
-	writer, err := index.NewIndexWriter(dir, config)
+	writer, err := index.NewWriter(dir, config)
 	if err != nil {
 		panic(err)
 	}
+	defer writer.Close()
 
-	reader, err := index.DirectoryReaderOpen(writer)
-	if err != nil {
-		panic(err)
+	{
+		doc := document.NewDocument()
+		doc.Add(document.NewField[int32]("a", 74, document.STORED_ONLY))
+		doc.Add(document.NewField[int32]("a1", 86, document.STORED_ONLY))
+		doc.Add(document.NewField[int32]("a2", 1237, document.STORED_ONLY))
+		docID, err := writer.AddDocument(doc)
+		if err != nil {
+			panic(err)
+		}
+		fmt.Println(docID)
 	}
 
-	maxDoc := reader.MaxDoc()
+	{
+		doc := document.NewDocument()
+		doc.Add(document.NewField[int32]("a", 123, document.STORED_ONLY))
+		doc.Add(document.NewField[int32]("a1", 123, document.STORED_ONLY))
+		doc.Add(document.NewField[int32]("a2", 789, document.STORED_ONLY))
 
-	for i := 0; i < maxDoc; i++ {
-		doc, err := reader.DocumentV2(i, map[string]struct{}{"sequence": {}})
+		docID, err := writer.AddDocument(doc)
 		if err != nil {
-			fmt.Println(err)
-			continue
+			panic(err)
 		}
-		if doc == nil {
-			continue
-		}
-		terms, err := doc.GetField("sequence")
-		if err != nil {
-			fmt.Println(err)
-			continue
-		}
-		fmt.Println(terms.Name(), terms.Value())
+		fmt.Println(docID)
 	}
 
-	//searcher := search.NewIndexSearcher(reader)
-	//
-	//searchSortField1 := index.NewSortedSetSortFieldV1("sort0", true, index.MAX)
-	//searchSortField2 := index.NewSortedSetSortFieldV1("sort1", true, index.MIN)
-	//
-	//searchSortFields := []index.SortField{searchSortField1, searchSortField2}
-	//
-	//searchSort := index.NewSort(searchSortFields)
-	//
-	//search.
+	{
+		doc := document.NewDocument()
+		doc.Add(document.NewField[int32]("a", 741, document.STORED_ONLY))
+		doc.Add(document.NewField[int32]("a1", 861, document.STORED_ONLY))
+		doc.Add(document.NewField[int32]("a2", 12137, document.STORED_ONLY))
+		docID, err := writer.AddDocument(doc)
+		if err != nil {
+			panic(err)
+		}
+		fmt.Println(docID)
+	}
 
-	//docs := reader.NumDocs()
-	//
-	//searcher.Search(search.NewNamedMatches(), 100, searchSort).scoreDocs
+	{
+		doc := document.NewDocument()
+		point1, _ := document.NewBinaryPoint("p1", []byte{1}, []byte{2})
+		point2, _ := document.NewBinaryPoint("p2", []byte{1}, []byte{2})
+		point3, _ := document.NewBinaryPoint("p3", []byte{1}, []byte{2})
+		doc.Add(point1)
+		doc.Add(point2)
+		doc.Add(point3)
+		docID, err := writer.AddDocument(doc)
+		if err != nil {
+			panic(err)
+		}
+		fmt.Println(docID)
+	}
 
-	//fmt.Println(docs)
-	//
-	//{
-	//	doc := document.NewDocument()
-	//	doc.Add(document.NewStoredFieldAny("a", 74, document.STORED_ONLY))
-	//	doc.Add(document.NewStoredFieldAny("a1", 86, document.STORED_ONLY))
-	//	doc.Add(document.NewStoredFieldAny("a2", 1237, document.STORED_ONLY))
-	//	docID, err := writer.AddDocument(doc)
-	//	if err != nil {
-	//		panic(err)
-	//	}
-	//	fmt.Println(docID)
-	//}
-	//
-	//{
-	//	doc := document.NewDocument()
-	//	doc.Add(document.NewStoredFieldAny("a", 123, document.STORED_ONLY))
-	//	doc.Add(document.NewStoredFieldAny("a1", 123, document.STORED_ONLY))
-	//	doc.Add(document.NewStoredFieldAny("a2", 789, document.STORED_ONLY))
-	//
-	//	docID, err := writer.AddDocument(doc)
-	//	if err != nil {
-	//		panic(err)
-	//	}
-	//	fmt.Println(docID)
-	//}
-	//
-	//{
-	//	doc := document.NewDocument()
-	//	doc.Add(document.NewStoredFieldAny("a", 741, document.STORED_ONLY))
-	//	doc.Add(document.NewStoredFieldAny("a1", 861, document.STORED_ONLY))
-	//	doc.Add(document.NewStoredFieldAny("a2", 12137, document.STORED_ONLY))
-	//	docID, err := writer.AddDocument(doc)
-	//	if err != nil {
-	//		panic(err)
-	//	}
-	//	fmt.Println(docID)
-	//}
+	{
+
+	}
+
 }
