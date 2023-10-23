@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+
 	"github.com/geange/lucene-go/core/analysis"
 	"github.com/geange/lucene-go/core/analysis/standard"
 	"github.com/geange/lucene-go/core/document"
@@ -11,7 +12,7 @@ import (
 )
 
 func main() {
-	mi, err := memory.NewNewMemoryIndexDefault()
+	mi, err := memory.NewIndex()
 	if err != nil {
 		panic(err)
 	}
@@ -21,9 +22,9 @@ func main() {
 	set.Add("\n")
 	set.Add("\t")
 
-	analyzer := standard.NewStandardAnalyzer(set)
+	analyzer := standard.NewAnalyzer(set)
 
-	err = mi.AddField(document.NewTextField("f1", "some text", false), analyzer)
+	err = mi.AddIndexAbleField(document.NewTextField("f1", "some text", false), analyzer)
 	if err != nil {
 		panic(err)
 	}

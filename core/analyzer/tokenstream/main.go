@@ -12,21 +12,30 @@ func main() {
 	set.Add("\n")
 	set.Add("\t")
 
-	analyzer := standard.NewStandardAnalyzer(set)
+	analyzer := standard.NewAnalyzer(set)
 
 	imp := analysis.NewAnalyzerImp(analyzer)
 
-	tokenstream, err := imp.TokenStreamByString("xxxx", "aaaa BBBFFDs cccc dddd")
+	stream, err := imp.TokenStreamFromText("xxxx", "aaaa BBBFFDs cccc dddd")
 	if err != nil {
 		panic(err)
 	}
 
-	tokenstream.IncrementToken()
-	fmt.Println(string(tokenstream.AttributeSource().CharTerm().Buffer()))
+	_, err = stream.IncrementToken()
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(string(stream.AttributeSource().CharTerm().Buffer()))
 
-	tokenstream.IncrementToken()
-	fmt.Println(string(tokenstream.AttributeSource().CharTerm().Buffer()))
+	_, err = stream.IncrementToken()
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(string(stream.AttributeSource().CharTerm().Buffer()))
 
-	tokenstream.IncrementToken()
-	fmt.Println(string(tokenstream.AttributeSource().CharTerm().Buffer()))
+	_, err = stream.IncrementToken()
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(string(stream.AttributeSource().CharTerm().Buffer()))
 }
