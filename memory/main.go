@@ -31,4 +31,10 @@ func main() {
 
 	count := mi.Search(search.NewTermQuery(index.NewTerm("f1", []byte("text"))))
 	fmt.Println(count)
+
+	count1 := mi.Search(search.NewTermQuery(index.NewTerm("f1", []byte("some"))))
+	fmt.Println(count1)
+
+	count2 := mi.Search(search.NewTermQuery(index.NewTerm("f1", []byte("some text"))))
+	fmt.Println(count2)
 }
