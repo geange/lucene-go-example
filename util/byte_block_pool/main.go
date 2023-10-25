@@ -2,11 +2,11 @@ package main
 
 import (
 	"fmt"
-	"github.com/geange/lucene-go/core/util"
+	"github.com/geange/lucene-go/core/util/bytesutils"
 )
 
 func main() {
-	pool := util.NewByteBlockPool(util.NewBytesAllocator(util.BYTE_BLOCK_SIZE, &util.DirectBytesAllocator{}))
+	pool := bytesutils.NewByteBlockPool(bytesutils.NewBytesAllocator(bytesutils.BYTE_BLOCK_SIZE, &bytesutils.DirectBytesAllocator{}))
 	pool.NewSlice(2)
 	pool.Append([]byte("abcdefg"))
 

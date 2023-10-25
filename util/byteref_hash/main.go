@@ -2,12 +2,12 @@ package main
 
 import (
 	"fmt"
-	"github.com/geange/lucene-go/core/util"
+	"github.com/geange/lucene-go/core/util/bytesutils"
 )
 
 func main() {
-	pool := util.NewByteBlockPool(util.NewBytesAllocator(util.BYTE_BLOCK_SIZE, &util.DirectBytesAllocator{}))
-	hash := util.NewBytesRefHash(pool)
+	pool := bytesutils.NewByteBlockPool(bytesutils.NewBytesAllocator(bytesutils.BYTE_BLOCK_SIZE, &bytesutils.DirectBytesAllocator{}))
+	hash := bytesutils.NewBytesHash(pool)
 
 	id, err := hash.Add([]byte("hello"))
 	if err != nil {
