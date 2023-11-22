@@ -43,7 +43,7 @@ func main() {
 
 	state := index.NewSegmentWriteState(dir, segment, fieldInfos, nil, nil)
 
-	writer, err := simpletext.NewSimpleTextFieldsWriter(state)
+	writer, err := simpletext.NewFieldsWriter(state)
 	if err != nil {
 		panic(err)
 	}

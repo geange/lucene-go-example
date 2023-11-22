@@ -2,13 +2,14 @@ package main
 
 import (
 	"fmt"
-	"github.com/geange/lucene-go/core/util"
+
+	"github.com/geange/lucene-go/core/util/ints"
 )
 
 func main() {
-	pool := util.NewIntBlockPool(nil)
+	pool := ints.NewBlockPool(nil)
 
-	writer := util.NewSliceWriter(pool)
+	writer := ints.NewSliceWriter(pool)
 
 	writer.StartNewSlice()
 

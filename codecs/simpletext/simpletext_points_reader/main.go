@@ -19,7 +19,7 @@ func main() {
 		panic(err)
 	}
 
-	format := simpletext.NewSimpleTextPointsFormat()
+	format := simpletext.NewPointsFormat()
 
 	version := util.NewVersion(8, 11, 0)
 	minVersion := util.NewVersion(8, 0, 0)

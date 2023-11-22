@@ -15,10 +15,10 @@ func main() {
 		panic(err)
 	}
 
-	codec := simpletext.NewSimpleTextCodec()
+	codec := simpletext.NewCodec()
 	similarity := search.NewCastBM25Similarity()
 
-	config := index.NewIndexWriterConfig(codec, similarity)
+	config := index.NewWriterConfig(codec, similarity)
 
 	writer, err := index.NewWriter(dir, config)
 	if err != nil {

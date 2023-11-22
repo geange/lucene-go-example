@@ -14,7 +14,7 @@ func main() {
 		panic(err)
 	}
 
-	format := simpletext.NewSimpleTextPointsFormat()
+	format := simpletext.NewPointsFormat()
 
 	version := util.NewVersion(8, 11, 0)
 	minVersion := util.NewVersion(8, 0, 0)
@@ -48,7 +48,7 @@ func main() {
 
 	readState := index.NewSegmentReadState(dir, segment, fieldInfos, nil, "")
 
-	reader, err := simpletext.NewSimpleTextPointsReader(readState)
+	reader, err := simpletext.NewPointsReader(readState)
 	if err != nil {
 		panic(err)
 	}

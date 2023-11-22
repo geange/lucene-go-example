@@ -14,9 +14,9 @@ func main() {
 
 	analyzer := standard.NewAnalyzer(set)
 
-	imp := analysis.NewAnalyzerImp(analyzer)
+	imp := analysis.NewAnalyzer(analyzer)
 
-	stream, err := imp.TokenStreamFromText("xxxx", "aaaa BBBFFDs cccc dddd")
+	stream, err := imp.GetTokenStreamFromText("xxxx", "aaaa BBBFFDs cccc dddd")
 	if err != nil {
 		panic(err)
 	}

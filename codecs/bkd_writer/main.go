@@ -23,7 +23,7 @@ func main() {
 		panic(err)
 	}
 
-	writer := simpletext.NewSimpleTextBKDWriter(
+	writer := simpletext.NewBKDWriter(
 		100, dir, "demo", cfg, 16, 4)
 
 	writer.Add(Point(5, 4), 1)
