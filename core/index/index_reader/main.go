@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"fmt"
 
 	"github.com/geange/lucene-go/codecs/simpletext"
@@ -16,16 +17,19 @@ func main() {
 	}
 
 	codec := simpletext.NewCodec()
-	similarity := search.NewCastBM25Similarity()
-
-	config := index.NewWriterConfig(codec, similarity)
-
-	writer, err := index.NewWriter(dir, config)
+	similarity, err := search.NewBM25Similarity()
 	if err != nil {
 		panic(err)
 	}
 
-	reader, err := index.DirectoryReaderOpen(writer)
+	config := index.NewIndexWriterConfig(codec, similarity)
+
+	writer, err := index.NewIndexWriter(context.Background(), dir, config)
+	if err != nil {
+		panic(err)
+	}
+
+	reader, err := index.DirectoryReaderOpen(context.Background(), writer)
 	if err != nil {
 		panic(err)
 	}
@@ -53,7 +57,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	topDocs, err := searcher.SearchTopN(search.NewMatchAllDocsQuery(), 100)
+	topDocs, err := searcher.SearchTopN(context.Background(), search.NewMatchAllDocsQuery(), 100)
 	if err != nil {
 		panic(err)
 	}
@@ -61,7 +65,7 @@ func main() {
 	result := topDocs.GetScoreDocs()
 	for _, scoreDoc := range result {
 		docID := scoreDoc.GetDoc()
-		document, err := reader.Document(docID)
+		document, err := reader.Document(context.Background(), docID)
 		if err != nil {
 			panic(err)
 		}

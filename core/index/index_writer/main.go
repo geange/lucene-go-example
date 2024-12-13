@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"github.com/geange/lucene-go/core/document"
 
@@ -17,11 +18,14 @@ func main() {
 	}
 
 	codec := simpletext.NewCodec()
-	similarity := search.NewCastBM25Similarity()
+	similarity, err := search.NewBM25Similarity()
+	if err != nil {
+		panic(err)
+	}
 
-	config := index.NewWriterConfig(codec, similarity)
+	config := index.NewIndexWriterConfig(codec, similarity)
 
-	writer, err := index.NewWriter(dir, config)
+	writer, err := index.NewIndexWriter(context.Background(), dir, config)
 	if err != nil {
 		panic(err)
 	}
@@ -32,7 +36,7 @@ func main() {
 		doc.Add(document.NewField[int32]("a", 74, document.STORED_ONLY))
 		doc.Add(document.NewField[int32]("a1", 86, document.STORED_ONLY))
 		doc.Add(document.NewField[int32]("a2", 1237, document.STORED_ONLY))
-		docID, err := writer.AddDocument(doc)
+		docID, err := writer.AddDocument(context.Background(), doc)
 		if err != nil {
 			panic(err)
 		}
@@ -45,7 +49,7 @@ func main() {
 		doc.Add(document.NewField[int32]("a1", 123, document.STORED_ONLY))
 		doc.Add(document.NewField[int32]("a2", 789, document.STORED_ONLY))
 
-		docID, err := writer.AddDocument(doc)
+		docID, err := writer.AddDocument(context.Background(), doc)
 		if err != nil {
 			panic(err)
 		}
@@ -57,7 +61,7 @@ func main() {
 		doc.Add(document.NewField[int32]("a", 741, document.STORED_ONLY))
 		doc.Add(document.NewField[int32]("a1", 861, document.STORED_ONLY))
 		doc.Add(document.NewField[int32]("a2", 12137, document.STORED_ONLY))
-		docID, err := writer.AddDocument(doc)
+		docID, err := writer.AddDocument(context.Background(), doc)
 		if err != nil {
 			panic(err)
 		}
@@ -72,7 +76,7 @@ func main() {
 		doc.Add(point1)
 		doc.Add(point2)
 		doc.Add(point3)
-		docID, err := writer.AddDocument(doc)
+		docID, err := writer.AddDocument(context.Background(), doc)
 		if err != nil {
 			panic(err)
 		}

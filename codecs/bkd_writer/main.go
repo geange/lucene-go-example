@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"encoding/binary"
 	"github.com/geange/lucene-go/codecs/simpletext"
 	"github.com/geange/lucene-go/core/store"
@@ -18,7 +19,8 @@ func main() {
 		panic(err)
 	}
 
-	output, err := dir.CreateOutput("bkd.txt", nil)
+	ctx := context.Background()
+	output, err := dir.CreateOutput(ctx, "bkd.txt")
 	if err != nil {
 		panic(err)
 	}
@@ -26,10 +28,22 @@ func main() {
 	writer := simpletext.NewBKDWriter(
 		100, dir, "demo", cfg, 16, 4)
 
-	writer.Add(Point(5, 4), 1)
-	writer.Add(Point(1, 2), 1)
-	writer.Add(Point(1, 3), 1)
-	writer.Add(Point(2, 9), 2)
+	err = writer.Add(ctx, Point(5, 4), 1)
+	if err != nil {
+		return
+	}
+	err = writer.Add(ctx, Point(1, 2), 1)
+	if err != nil {
+		return
+	}
+	err = writer.Add(ctx, Point(1, 3), 1)
+	if err != nil {
+		return
+	}
+	err = writer.Add(ctx, Point(2, 9), 2)
+	if err != nil {
+		return
+	}
 
 	writer.Finish(output)
 	output.Close()

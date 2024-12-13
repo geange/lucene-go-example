@@ -65,7 +65,7 @@ func main() {
 
 	writeState := index.NewSegmentWriteState(dir, segment, infos, nil, nil)
 
-	writer, err := simpletext.NewSimpleTextPointsWriter(writeState)
+	writer, err := simpletext.NewPointsWriter(writeState)
 	if err != nil {
 		panic(err)
 	}
