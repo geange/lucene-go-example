@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/geange/lucene-go/codecs/simpletext"
+	_ "github.com/geange/lucene-go/codecs/simpletext"
 	"github.com/geange/lucene-go/core/index"
 	"github.com/geange/lucene-go/core/search"
 	"github.com/geange/lucene-go/core/store"
@@ -16,20 +16,13 @@ func main() {
 		panic(err)
 	}
 
-	codec := simpletext.NewCodec()
-	similarity, err := search.NewBM25Similarity()
-	if err != nil {
-		panic(err)
-	}
+	//codec := simpletext.NewCodec()
+	//similarity, err := search.NewBM25Similarity()
+	//if err != nil {
+	//	panic(err)
+	//}
 
-	config := index.NewIndexWriterConfig(codec, similarity)
-
-	writer, err := index.NewIndexWriter(context.Background(), dir, config)
-	if err != nil {
-		panic(err)
-	}
-
-	reader, err := index.DirectoryReaderOpen(context.Background(), writer)
+	reader, err := index.OpenDirectoryReader(context.Background(), dir, nil, nil)
 	if err != nil {
 		panic(err)
 	}

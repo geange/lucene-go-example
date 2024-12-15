@@ -3,15 +3,21 @@ package main
 import (
 	"context"
 	"fmt"
-	"github.com/geange/lucene-go/core/document"
+	"os"
 
 	"github.com/geange/lucene-go/codecs/simpletext"
+	"github.com/geange/lucene-go/core/document"
 	"github.com/geange/lucene-go/core/index"
 	"github.com/geange/lucene-go/core/search"
 	"github.com/geange/lucene-go/core/store"
 )
 
 func main() {
+	err := os.RemoveAll("data")
+	if err != nil {
+		panic(err)
+	}
+
 	dir, err := store.NewNIOFSDirectory("data")
 	if err != nil {
 		panic(err)
@@ -33,9 +39,9 @@ func main() {
 
 	{
 		doc := document.NewDocument()
-		doc.Add(document.NewField[int32]("a", 74, document.STORED_ONLY))
-		doc.Add(document.NewField[int32]("a1", 86, document.STORED_ONLY))
-		doc.Add(document.NewField[int32]("a2", 1237, document.STORED_ONLY))
+		doc.Add(document.NewTextField("a", "74", false))
+		doc.Add(document.NewTextField("a1", "86", false))
+		doc.Add(document.NewTextField("a2", "1237", false))
 		docID, err := writer.AddDocument(context.Background(), doc)
 		if err != nil {
 			panic(err)
@@ -45,9 +51,9 @@ func main() {
 
 	{
 		doc := document.NewDocument()
-		doc.Add(document.NewField[int32]("a", 123, document.STORED_ONLY))
-		doc.Add(document.NewField[int32]("a1", 123, document.STORED_ONLY))
-		doc.Add(document.NewField[int32]("a2", 789, document.STORED_ONLY))
+		doc.Add(document.NewTextField("a", "123", false))
+		doc.Add(document.NewTextField("a1", "123", false))
+		doc.Add(document.NewTextField("a2", "789", false))
 
 		docID, err := writer.AddDocument(context.Background(), doc)
 		if err != nil {
@@ -58,9 +64,9 @@ func main() {
 
 	{
 		doc := document.NewDocument()
-		doc.Add(document.NewField[int32]("a", 741, document.STORED_ONLY))
-		doc.Add(document.NewField[int32]("a1", 861, document.STORED_ONLY))
-		doc.Add(document.NewField[int32]("a2", 12137, document.STORED_ONLY))
+		doc.Add(document.NewTextField("a", "741", false))
+		doc.Add(document.NewTextField("a1", "861", false))
+		doc.Add(document.NewTextField("a2", "12137", false))
 		docID, err := writer.AddDocument(context.Background(), doc)
 		if err != nil {
 			panic(err)
@@ -68,23 +74,19 @@ func main() {
 		fmt.Println(docID)
 	}
 
-	{
-		doc := document.NewDocument()
-		point1, _ := document.NewBinaryPoint("p1", []byte{1}, []byte{2})
-		point2, _ := document.NewBinaryPoint("p2", []byte{1}, []byte{2})
-		point3, _ := document.NewBinaryPoint("p3", []byte{1}, []byte{2})
-		doc.Add(point1)
-		doc.Add(point2)
-		doc.Add(point3)
-		docID, err := writer.AddDocument(context.Background(), doc)
-		if err != nil {
-			panic(err)
-		}
-		fmt.Println(docID)
-	}
-
-	{
-
-	}
+	//{
+	//	doc := document.NewDocument()
+	//	point1, _ := document.NewBinaryPoint("p1", []byte{1}, []byte{2})
+	//	point2, _ := document.NewBinaryPoint("p2", []byte{1}, []byte{2})
+	//	point3, _ := document.NewBinaryPoint("p3", []byte{1}, []byte{2})
+	//	doc.Add(point1)
+	//	doc.Add(point2)
+	//	doc.Add(point3)
+	//	docID, err := writer.AddDocument(context.Background(), doc)
+	//	if err != nil {
+	//		panic(err)
+	//	}
+	//	fmt.Println(docID)
+	//}
 
 }
