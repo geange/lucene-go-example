@@ -39,9 +39,9 @@ func main() {
 
 	{
 		doc := document.NewDocument()
-		doc.Add(document.NewTextField("a", "74", false))
-		doc.Add(document.NewTextField("a1", "86", false))
-		doc.Add(document.NewTextField("a2", "1237", false))
+		doc.Add(document.NewTextField("a", "74", true))
+		doc.Add(document.NewTextField("a1", "86", true))
+		doc.Add(document.NewTextField("a2", "1237", true))
 		docID, err := writer.AddDocument(context.Background(), doc)
 		if err != nil {
 			panic(err)
@@ -51,9 +51,9 @@ func main() {
 
 	{
 		doc := document.NewDocument()
-		doc.Add(document.NewTextField("a", "123", false))
-		doc.Add(document.NewTextField("a1", "123", false))
-		doc.Add(document.NewTextField("a2", "789", false))
+		doc.Add(document.NewTextField("a", "123", true))
+		doc.Add(document.NewTextField("a1", "123", true))
+		doc.Add(document.NewTextField("a2", "789", true))
 
 		docID, err := writer.AddDocument(context.Background(), doc)
 		if err != nil {
@@ -64,9 +64,9 @@ func main() {
 
 	{
 		doc := document.NewDocument()
-		doc.Add(document.NewTextField("a", "741", false))
-		doc.Add(document.NewTextField("a1", "861", false))
-		doc.Add(document.NewTextField("a2", "12137", false))
+		doc.Add(document.NewTextField("a", "741", true))
+		doc.Add(document.NewTextField("a1", "861", true))
+		doc.Add(document.NewTextField("a2", "12137", true))
 		docID, err := writer.AddDocument(context.Background(), doc)
 		if err != nil {
 			panic(err)
