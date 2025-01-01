@@ -62,7 +62,8 @@ func main() {
 		if err != nil {
 			panic(err)
 		}
-		value, err := document.Get("sequence")
+		document.GetFields()
+		value, err := document.GetFields("sequence")
 		if err != nil {
 			return
 		}
