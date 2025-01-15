@@ -2,8 +2,6 @@ module github.com/geange/lucene-go-example
 
 go 1.23.4
 
-toolchain go1.23.4
-
 require (
 	github.com/geange/gods-generic v0.0.0-20250111143821-76f09d5dd7e0
 	github.com/geange/lucene-go v0.0.1

@@ -16,35 +16,10 @@ func main() {
 		panic(err)
 	}
 
-	//codec := simpletext.NewCodec()
-	//similarity, err := search.NewBM25Similarity()
-	//if err != nil {
-	//	panic(err)
-	//}
-
 	reader, err := index.OpenDirectoryReader(context.Background(), dir, nil, nil)
 	if err != nil {
 		panic(err)
 	}
-
-	//maxDoc := reader.MaxDoc()
-	//
-	//for i := 0; i < maxDoc; i++ {
-	//	doc, err := reader.DocumentV2(i, map[string]struct{}{"sequence": {}})
-	//	if err != nil {
-	//		fmt.Println(err)
-	//		continue
-	//	}
-	//	if doc == nil {
-	//		continue
-	//	}
-	//	terms, err := doc.GetField("sequence")
-	//	if err != nil {
-	//		fmt.Println(err)
-	//		continue
-	//	}
-	//	fmt.Println(terms.Name(), terms.value())
-	//}
 
 	searcher, err := search.NewIndexSearcher(reader)
 	if err != nil {
@@ -62,13 +37,11 @@ func main() {
 		if err != nil {
 			panic(err)
 		}
-		document.GetFields()
-		value, err := document.GetFields("sequence")
-		if err != nil {
-			return
+
+		for field := range document.GetFields("a") {
+			fmt.Printf("段内排序后的文档号: %d  VS 段内排序前的文档: %s\n",
+				scoreDoc.GetDoc(), field.Get())
 		}
-		fmt.Printf("段内排序后的文档号: %d  VS 段内排序前的文档: %s\n",
-			scoreDoc.GetDoc(), value)
 	}
 
 	//searchSortField1 := index.NewSortedSetSortFieldV1("sort0", true, index.MAX)

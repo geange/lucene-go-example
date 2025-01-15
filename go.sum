@@ -2,12 +2,8 @@ github.com/bits-and-blooms/bitset v1.20.0 h1:2F+rfL86jE2d/bmw7OhqUg2Sj/1rURkBn3M
 github.com/bits-and-blooms/bitset v1.20.0/go.mod h1:7hO7Gc7Pp1vODcmWvKMRA9BNmbv6a/7QIWpPxHddWR8=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
-github.com/geange/gods-generic v0.0.0-20231208144256-fc5f66e86023 h1:mEfgX1qT1j8+RqCI4GEHZ2VFcJTkyLppFt1Y9WnMevM=
-github.com/geange/gods-generic v0.0.0-20231208144256-fc5f66e86023/go.mod h1:/3tmNCGH6KyQVtclXBnH7cGzROO+C3MdwUr7lH8MNMQ=
 github.com/geange/gods-generic v0.0.0-20250111143821-76f09d5dd7e0 h1:NVxWr4xd3pm+V0UYjKFRqNupKsJU/p2DxoDkFNZanGA=
 github.com/geange/gods-generic v0.0.0-20250111143821-76f09d5dd7e0/go.mod h1:yWz5bj4Vrx1xbrSrpr4h0ifmxZAOQhEIYm6A/JGhU5Y=
-github.com/geange/lucene-go v0.0.0-20241124154004-80fb460d9e67 h1:frZMgY9SIw6D7YV8dxr5BdHbx/GHDWX6tBFjbDSn7lA=
-github.com/geange/lucene-go v0.0.0-20241124154004-80fb460d9e67/go.mod h1:B0h8p4doEirEfWUiG9dePTD6wArMxdXEvCDRPB9gBkk=
 github.com/geange/lucene-go v0.0.1 h1:JDX8vB8MjWogTNsLAH6AqKyKurMiq9YEgqx5n5aWZlY=
 github.com/geange/lucene-go v0.0.1/go.mod h1:l/yUHV8dQSIxTl4YwftOC/w7pxs+IeiLgC7wPKRXy4M=
 github.com/google/uuid v1.6.0 h1:NIvaJDMOsjHA8n1jAhLSgzrAzy1Hgr+hNrb57e+94F0=
