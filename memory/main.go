@@ -7,7 +7,7 @@ import (
 	"github.com/geange/lucene-go/core/analysis"
 	"github.com/geange/lucene-go/core/analysis/standard"
 	"github.com/geange/lucene-go/core/document"
-	"github.com/geange/lucene-go/core/index"
+	"github.com/geange/lucene-go/core/interface/index"
 	"github.com/geange/lucene-go/memory"
 )
 
@@ -78,7 +78,7 @@ func testPointValuesDoNotAffectPositionsOrOffset() error {
 		return err
 	}
 	leafReader := leaves[0].Reader()
-	terms, err := leafReader.(index.LeafReaderBaseInner).Terms("text")
+	terms, err := leafReader.(index.LeafReader).Terms("text")
 	if err != nil {
 		return err
 	}
