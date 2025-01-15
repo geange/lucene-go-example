@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"fmt"
 
 	"github.com/geange/lucene-go/core/analysis"
@@ -77,7 +78,7 @@ func testPointValuesDoNotAffectPositionsOrOffset() error {
 		return err
 	}
 	leafReader := leaves[0].Reader()
-	terms, err := leafReader.(index.LeafReader).Terms("text")
+	terms, err := leafReader.(index.LeafReaderBaseInner).Terms("text")
 	if err != nil {
 		return err
 	}
@@ -86,7 +87,7 @@ func testPointValuesDoNotAffectPositionsOrOffset() error {
 		return err
 	}
 	{
-		bytes, err := tenum.Next()
+		bytes, err := tenum.Next(context.Background())
 		if err != nil {
 			return err
 		}
@@ -94,7 +95,7 @@ func testPointValuesDoNotAffectPositionsOrOffset() error {
 	}
 
 	{
-		bytes, err := tenum.Next()
+		bytes, err := tenum.Next(context.Background())
 		if err != nil {
 			return err
 		}
@@ -102,7 +103,7 @@ func testPointValuesDoNotAffectPositionsOrOffset() error {
 	}
 
 	{
-		bytes, err := tenum.Next()
+		bytes, err := tenum.Next(context.Background())
 		if err != nil {
 			return err
 		}
