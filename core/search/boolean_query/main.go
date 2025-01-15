@@ -1,31 +1,23 @@
 package main
 
 import (
+	"context"
 	"fmt"
 
-	"github.com/geange/lucene-go/codecs/simpletext"
+	_ "github.com/geange/lucene-go/codecs/simpletext"
 	"github.com/geange/lucene-go/core/index"
+	index2 "github.com/geange/lucene-go/core/interface/index"
 	"github.com/geange/lucene-go/core/search"
 	"github.com/geange/lucene-go/core/store"
 )
 
 func main() {
-	dir, err := store.NewNIOFSDirectory("./data")
+	dir, err := store.NewNIOFSDirectory("data")
 	if err != nil {
 		panic(err)
 	}
 
-	codec := simpletext.NewCodec()
-	similarity := search.NewCastBM25Similarity()
-
-	config := index.NewWriterConfig(codec, similarity)
-
-	writer, err := index.NewWriter(dir, config)
-	if err != nil {
-		panic(err)
-	}
-
-	reader, err := index.DirectoryReaderOpen(writer)
+	reader, err := index.OpenDirectoryReader(context.Background(), dir, nil, nil)
 	if err != nil {
 		panic(err)
 	}
@@ -41,16 +33,16 @@ func main() {
 	q4 := search.NewTermQuery(index.NewTerm("author", []byte("author4")))
 
 	builder := search.NewBooleanQueryBuilder()
-	builder.AddQuery(q1, search.OccurMust)
-	builder.AddQuery(q2, search.OccurMust)
-	builder.AddQuery(q3, search.OccurMust)
-	builder.AddQuery(q4, search.OccurMust)
+	builder.AddQuery(q1, index2.OccurMust)
+	builder.AddQuery(q2, index2.OccurMust)
+	builder.AddQuery(q3, index2.OccurMust)
+	builder.AddQuery(q4, index2.OccurMust)
 	query, err := builder.Build()
 	if err != nil {
 		panic(err)
 	}
 
-	topDocs, err := searcher.SearchTopN(query, 5)
+	topDocs, err := searcher.SearchTopN(context.Background(), query, 5)
 	if err != nil {
 		panic(err)
 	}

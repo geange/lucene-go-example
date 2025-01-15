@@ -1,31 +1,22 @@
 package main
 
 import (
+	"context"
 	"fmt"
 
-	"github.com/geange/lucene-go/codecs/simpletext"
+	_ "github.com/geange/lucene-go/codecs/simpletext"
 	"github.com/geange/lucene-go/core/index"
 	"github.com/geange/lucene-go/core/search"
 	"github.com/geange/lucene-go/core/store"
 )
 
 func main() {
-	dir, err := store.NewNIOFSDirectory("./data")
+	dir, err := store.NewNIOFSDirectory("data")
 	if err != nil {
 		panic(err)
 	}
 
-	codec := simpletext.NewCodec()
-	similarity := search.NewCastBM25Similarity()
-
-	config := index.NewWriterConfig(codec, similarity)
-
-	writer, err := index.NewWriter(dir, config)
-	if err != nil {
-		panic(err)
-	}
-
-	reader, err := index.DirectoryReaderOpen(writer)
+	reader, err := index.OpenDirectoryReader(context.Background(), dir, nil, nil)
 	if err != nil {
 		panic(err)
 	}
@@ -37,7 +28,7 @@ func main() {
 
 	query := search.NewTermQuery(index.NewTerm("content", []byte("a")))
 
-	topDocs, err := searcher.SearchTopN(query, 5)
+	topDocs, err := searcher.SearchTopN(context.Background(), query, 5)
 	if err != nil {
 		panic(err)
 	}
